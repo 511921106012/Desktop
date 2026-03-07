@@ -1,0 +1,43 @@
+====================================
+   INTERNAL (BUILTIN) COMMANDS
+   What are we doing here?
+   → These commands shell itself run pannanum
+   → Fork() use pannakoodadhu
+====================================
+
+1. cd <path>
+   → Change directory
+   → System call: chdir()
+   → No arg → HOME directory
+
+2. pwd
+   → Print current directory
+   → System call: getcwd()
+
+3. exit
+   → Close the shell
+   → exit(0) call pannurom
+
+4. echo
+   → echo hello       → plain print
+   → echo $$          → shell PID (getpid)
+   → echo $?          → last exit status
+   → echo $SHELL      → SHELL env variable
+
+5. jobs
+   → List all stopped jobs
+   → stopped[] array print pannurom
+
+6. fg
+   → Bring stopped job to foreground
+   → SIGCONT + waitpid(WUNTRACED)
+
+7. bg
+   → Resume stopped job in background
+   → SIGCONT only (no wait)
+
+====================================
+   PS1 - Prompt Change
+====================================
+   → PS1=user@emertxe   → valid
+   → PS1=               → invalid (empty not allowed)

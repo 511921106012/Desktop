@@ -1,0 +1,49 @@
+====================================
+   EXTERNAL COMMANDS
+   What are we doing here?
+   → These are programs in /bin /usr/bin
+   → Shell does fork() → child does execvp()
+====================================
+
+How it works:
+   fork()
+     ↓
+   Parent → waitpid()     Child → execvp()
+     ↓                      ↓
+   Wait for finish        Run the command
+
+====================================
+   Common External Commands
+====================================
+
+ls            → list files
+ls -l         → long format
+ls -a         → show hidden files
+date          → show date and time
+sleep 5       → wait 5 seconds
+cat file.txt  → print file content
+mkdir folder  → create folder
+rmdir folder  → remove folder
+rm file       → remove file
+cp a.txt b.txt → copy file
+mv a.txt b.txt → rename file
+grep word file → search in file
+wc -l file     → count lines
+ps             → show processes
+
+====================================
+   Pipe Examples (N-pipe)
+====================================
+
+ls | wc -l
+ls | grep .c
+ls | grep .c | wc -l
+cat file | grep word | wc -l
+
+====================================
+   Background Process (&)
+====================================
+
+sleep 10 &     → runs in background
+               → shell shows [job_id] pid
+               → shell continues immediately

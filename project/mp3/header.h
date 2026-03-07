@@ -1,10 +1,14 @@
 #ifndef HEADER_H
 #define HEADER_H
 
-void view_tag(const char *filename);
-void edit_tag(const char *filename, char option, const char *value);
-void print_help(void);
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-int syncsafe_to_int(unsigned char s[4]);
+void view_tags(char *filename);
+void edit_title(char *filename, char *new_title);
+void edit_comment(char *filename, char *new_comment);
+void print_help();
+int validate_mp3(char *filename);
 
 #endif

@@ -1,61 +1,55 @@
-#include <stdio.h>
-#include <string.h>
-#include "header.h"// custom heaer : contains prints_help,view_tag,rdit_tag,declration
+#include "header.h"
 
 int main(int argc, char *argv[])
 {
-    if (argc < 2)
-    {
-        print_help();
-        return 1;
-    }
-
-    /* Help */
-    if (strcmp(argv[1], "-h") == 0)
+    if(argc < 2)
     {
         print_help();
         return 0;
     }
 
-    /* View */
-    if (strcmp(argv[1], "-v") == 0)
+    if(argc < 3)
     {
-        if (argc != 3)
-        {
-            printf("Usage: %s -v <mp3file>\n", argv[0]);
-            return 1;
-        }
-        view_tag(argv[2]);// call funtion to view mp3 tag
+        printf("Error: No file specified\n");
+        print_help();
         return 0;
     }
 
-    /* Edit */
-    if (strcmp(argv[1], "-e") == 0)
+    if(validate_mp3(argv[2]) == 0)
     {
-        if (argc != 5)
-        {
-            printf("Usage: %s -e <mp3file> -t|-a|-A|-y|-g|-c \"value\"\n", argv[0]);
-            return 1;
-        }
-        
-
-        char tag_opt; // varaiale to store tag option
-        if      (strcmp(argv[3], "-t") == 0) tag_opt = 't';
-        else if (strcmp(argv[3], "-a") == 0) tag_opt = 'a';
-        else if (strcmp(argv[3], "-A") == 0) tag_opt = 'A';
-        else if (strcmp(argv[3], "-y") == 0) tag_opt = 'y';
-        else if (strcmp(argv[3], "-g") == 0) tag_opt = 'g';
-        else if (strcmp(argv[3], "-c") == 0) tag_opt = 'c';
-        else
-        {
-            printf("Invalid tag option\n");
-            return 1;
-        }
-
-        edit_tag(argv[2], tag_opt, argv[4]);// function call valid option
+        printf("Error: Only .mp3 files allowed\n");
         return 0;
     }
 
-    print_help();
-    return 1;
+    if(strcmp(argv[1], "-v") == 0)
+    {
+        view_tags(argv[2]);
+    }
+    else if(strcmp(argv[1], "-e") == 0)
+    {
+        if(argc < 4)
+        {
+            printf("Error: Missing title value\n");
+            printf("Usage: mp3 -e <file.mp3> <new_title>\n");
+            return 0;
+        }
+        edit_title(argv[2], argv[3]);
+    }
+    else if(strcmp(argv[1], "-c") == 0)
+    {
+        if(argc < 4)
+        {
+            printf("Error: Missing comment value\n");
+            printf("Usage: mp3 -c <file.mp3> <new_comment>\n");
+            return 0;
+        }
+        edit_comment(argv[2], argv[3]);
+    }
+    else
+    {
+        printf("Error: Unknown option '%s'\n", argv[1]);
+        print_help();
+    }
+
+    return 0;
 }

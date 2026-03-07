@@ -24,7 +24,6 @@ int main()
             printf("%d",num);
         }
         num++;
-        
     }
 
 

@@ -1,78 +1,94 @@
-#include <stdio.h>
-#include <string.h>
 #include "header.h"
-// vivw mp3 file
-void view_tag(const char *file)
+
+/* Genre names */
+char *genres[] = {
+"Blues","Classic Rock","Country","Dance","Disco","Funk","Grunge",
+"Hip-Hop","Jazz","Metal","New Age","Oldies","Other","Pop","R&B",
+"Rap","Reggae","Rock","Techno","Industrial","Alternative","Ska"
+};
+
+void view_tags(char *filename)
 {
-    FILE *fp = fopen(file, "rb");// bianry mood
-    if (!fp)
+    FILE *fp = fopen(filename, "rb");
+
+    if(fp == NULL)
     {
-        printf("File open error👍\n");
+        printf("Error: Unable to open file\n");
         return;
     }
 
-    unsigned char header[10];
-    fread(header, 1, 10, fp);
+    /* Check file size */
+    fseek(fp, 0, SEEK_END);
+    long size = ftell(fp);
 
-    if (memcmp(header, "ID3", 3) != 0)
+    if(size < 128)
     {
-        printf("No ID3 tag found👍\n");
+        printf("Invalid MP3 file\n");
         fclose(fp);
         return;
     }
 
-    int tag_size = syncsafe_to_int(&header[6]);// conert bytes to integer
-    long tag_end = tag_size + 10;// toatal tag size
+    /* Move to ID3v1 tag */
+    fseek(fp, -128, SEEK_END);
 
-    while (ftell(fp) < tag_end)
+    char id[4] = {0};
+    fread(id, 1, 3, fp);
+
+    if(strcmp(id, "TAG") != 0)
     {
-        char id[5] = {0};
-        unsigned char size_bytes[4];
-
-        if (fread(id, 1, 4, fp) != 4)
-            break;
-
-        fread(size_bytes, 1, 4, fp);
-
-        int size = // 4 byts size to integer
-            (size_bytes[0] << 24) |
-            (size_bytes[1] << 16) |
-            (size_bytes[2] << 8)  |
-             size_bytes[3];
-
-        fseek(fp, 2, SEEK_CUR);// skip 2 byts
-
-        if (!strncmp(id, "TIT2", 4) ||
-            !strncmp(id, "TPE1", 4) ||
-            !strncmp(id, "TALB", 4) ||
-            !strncmp(id, "TYER", 4) ||
-            !strncmp(id, "TCON", 4))
-        {
-            fseek(fp, 1, SEEK_CUR);
-            char data[256] = {0};
-            fread(data, 1, size - 1, fp);
-// printf tha all
-            if (!strncmp(id, "TIT2", 4)) printf("Title   : %s\n", data);
-            if (!strncmp(id, "TPE1", 4)) printf("Artist  : %s\n", data);
-            if (!strncmp(id, "TALB", 4)) printf("Album   : %s\n", data);
-            if (!strncmp(id, "TYER", 4)) printf("Year    : %s\n", data);
-            if (!strncmp(id, "TCON", 4)) printf("Genre   : %s\n", data);
-        }
-        else if (!strncmp(id, "COMM", 4))
-        {
-            char ch;
-            fseek(fp, 4, SEEK_CUR);
-            while ((ch = fgetc(fp)) != '\0');
-
-            char comment[256] = {0};
-            fread(comment, 1, size, fp);
-            printf("Comment : %s\n", comment);
-        }
-        else
-        {
-            fseek(fp, size, SEEK_CUR);// skip unwanted
-        }
+        printf("No ID3v1 tag found\n");
+        fclose(fp);
+        return;
     }
+
+    /* Declare fields with +1 byte for null terminator */
+    char title[31]  = {0};
+    char artist[31] = {0};
+    char album[31]  = {0};
+    char year[5]    = {0};
+
+    fread(title,  1, 30, fp);
+    fread(artist, 1, 30, fp);
+    fread(album,  1, 30, fp);
+    fread(year,   1, 4,  fp);
+
+    /* Read comment block once into buffer */
+    unsigned char buffer[30] = {0};
+    fread(buffer, 1, 30, fp);
+
+    char comment[29] = {0};
+    memcpy(comment, buffer, 28);
+    comment[28] = '\0';
+
+    /* Read genre byte */
+    unsigned char genre = 0;
+    fread(&genre, 1, 1, fp);
+
+    /* Null terminate strings safely */
+    title[30]  = '\0';
+    artist[30] = '\0';
+    album[30]  = '\0';
+    year[4]    = '\0';
+
+    printf("\n\n   🤠 Viewing MP3 Tags for 🎼 : %s\n", filename);
+    printf("   ------------------------------------\n\n");
+
+    printf("🎧 Title   : %s\n\n", strlen(title)  ? title  : "Not Available");
+    printf("🎤 Artist  : %s\n\n", strlen(artist) ? artist : "Not Available");
+    printf("💿 Album   : %s\n\n", strlen(album)  ? album  : "Not Available");
+    printf("📅 Year    : %s\n\n", strlen(year)   ? year   : "Not Available");
+
+    /* Only show comment if it has more than 3 meaningful characters */
+    if(strlen(comment) > 3)
+        printf("💬 Comment : %s\n\n", comment);
+    else
+        printf("💬 Comment : Not Available\n\n");
+
+    /* genre < 22 includes all 22 genres (index 0-21) */
+    if(genre < 22)
+        printf("🎼 Genre   : %s\n\n", genres[genre]);
+    else
+        printf("🎼 Genre   : Not Available\n\n");
 
     fclose(fp);
 }
