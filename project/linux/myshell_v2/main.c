@@ -11,7 +11,7 @@
    ================================================ */
 
 // --- Global Variables Definition ---
-char  prompt_str[MAX] = "minishell";   // default prompt
+char  prompt_str[MAX] = "johnshell";   // default prompt
 char  input_str[MAX];                   // user typed command (keep intact)
 char  cmd_buf[MAX];                     // copy for strtok splitting
 char *args[MAX_ARGS];                   // split arguments array
