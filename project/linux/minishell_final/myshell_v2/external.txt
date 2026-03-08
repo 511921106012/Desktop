@@ -1,9 +1,3 @@
-====================================
-   EXTERNAL COMMANDS
-   What are we doing here?
-   → These are programs in /bin /usr/bin
-   → Shell does fork() → child does execvp()
-====================================
 
 How it works:
    fork()
@@ -12,9 +6,7 @@ How it works:
      ↓                      ↓
    Wait for finish        Run the command
 
-====================================
-   Common External Commands
-====================================
+
 
 ls            → list files
 ls -l         → long format
@@ -31,18 +23,15 @@ grep word file → search in file
 wc -l file     → count lines
 ps             → show processes
 
-====================================
-   Pipe Examples (N-pipe)
-====================================
+
 
 ls | wc -l
 ls | grep .c
 ls | grep .c | wc -l
 cat file | grep word | wc -l
 
-====================================
    Background Process (&)
-====================================
+
 
 sleep 10 &     → runs in background
                → shell shows [job_id] pid

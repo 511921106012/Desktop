@@ -1,9 +1,4 @@
-====================================
-   INTERNAL (BUILTIN) COMMANDS
-   What are we doing here?
-   → These commands shell itself run pannanum
-   → Fork() use pannakoodadhu
-====================================
+
 
 1. cd <path>
    → Change directory
@@ -36,8 +31,6 @@
    → Resume stopped job in background
    → SIGCONT only (no wait)
 
-====================================
-   PS1 - Prompt Change
-====================================
+
    → PS1=user@emertxe   → valid
    → PS1=               → invalid (empty not allowed)

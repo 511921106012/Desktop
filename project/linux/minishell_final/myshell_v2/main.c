@@ -10,7 +10,7 @@
    → main() - shell loop run pannurom
    ================================================ */
 
-/* --- Global Variables Definition --- */
+// --- Global Variables Definition ---
 char  prompt_str[MAX] = "minishell";   // default prompt
 char  input_str[MAX];                   // user typed command (keep intact)
 char  cmd_buf[MAX];                     // copy for strtok splitting
