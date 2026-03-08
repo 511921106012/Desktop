@@ -191,23 +191,23 @@ void execute_internal_cmd()
         stopped_c--;
         fg_pid = stopped_pid[stopped_c];
 
-        printf("%s\n", stopped_cmd[stopped_c]);
+        // Fix: Save real command name into input_str
+        // so signal_handler saves correct name when Ctrl+Z pressed
+        strncpy(input_str, stopped_cmd[stopped_c], MAX - 1);
+        input_str[MAX - 1] = '\0';
+
+        printf("%s\n", input_str);
 
         // Send SIGCONT - resume the stopped process
         kill(fg_pid, SIGCONT);
 
-        // Wait - WUNTRACED means return if stopped again
+        // Wait - WUNTRACED means return if Ctrl+Z pressed again
         waitpid(fg_pid, &status, WUNTRACED);
 
-        if(WIFSTOPPED(status))
-        {
-            // Process stopped again - save back to array
-            stopped_pid[stopped_c] = fg_pid;
-            stopped_c++;
-            printf("\n[%d]  Stopped    %s\n",
-                   stopped_c, stopped_cmd[stopped_c - 1]);
-        }
-        else if(WIFEXITED(status))
+        // Fix: Remove double save here
+        // signal_handler already saved it when Ctrl+Z was pressed
+        // We only update last_status here
+        if(WIFEXITED(status))
         {
             last_status = WEXITSTATUS(status);
         }

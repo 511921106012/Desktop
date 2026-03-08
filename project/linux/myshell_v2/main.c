@@ -1,3 +1,22 @@
+/*DOCUMENTATION:
+-----------------------------------------------------------------------------------------
+Name :JOHANSON R
+Reg.no :25031_092
+Start date :03/03/2026
+End date :08/03/2026
+Description : This project implements a Mini Shell in C that mimics basic functionality of a Linux shell.
+              -> It supports execution of built-in commands, external commands, and pipe operations.
+              -> The shell also provides job control using signals such as Ctrl+C and Ctrl+Z.
+              -> This project demonstrates process creation, command parsing, and inter-process communication in Linux.
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+*/
+
+
+
+
+
+
 #include "head.h"
 
 /* ================================================
@@ -10,8 +29,8 @@
    → main() - shell loop run pannurom
    ================================================ */
 
-// --- Global Variables Definition ---
-char  prompt_str[MAX] = "johnshell";   // default prompt
+/* --- Global Variables Definition --- */
+char  prompt_str[MAX] = "minishell";   // default prompt
 char  input_str[MAX];                   // user typed command (keep intact)
 char  cmd_buf[MAX];                     // copy for strtok splitting
 char *args[MAX_ARGS];                   // split arguments array
