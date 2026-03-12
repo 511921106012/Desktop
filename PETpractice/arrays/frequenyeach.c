@@ -23,7 +23,7 @@ int main()
             falg=1;
             break;
         
-        }\
+        }
     }
 
     if(falg==1)

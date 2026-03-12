@@ -1,42 +1,31 @@
+// largest number of given range palndrome ;
 #include<stdio.h>
-
-int plan(int n)
+int pali(int n)
 {
-    int temp;
-    int  sum=0;
-    temp =n;
+    int temp =n;
+    int rem=0;
+    int rev =0;
 
     while(n>0)
     {
-        sum = sum + (n%10);
+        rev=rev*10+(n%10);
         n=n/10;
-
-
     }
-if(temp == sum)
-{
-    return 1;
 
-}
-else
-{
-    return 0 ;
-}
-    
+  return rev == temp;
 }
 int main()
 {
     int high,low;
-    printf("enter the number : ");
+    printf("enter the given range : ");
     scanf("%d %d",&high,&low);
 
-    for(int i = high;i>=low;i--)
+    for(int i=high;i>=low;i--)
     {
-        if(plan(i))
+        if(pali(i))
         {
-            printf("%d",i);
+            printf("largest palindrome is %d",i);
             break;
         }
-
     }
 }

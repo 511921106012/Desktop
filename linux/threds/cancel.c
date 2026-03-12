@@ -13,9 +13,6 @@ void *thread(void * data)
  pthread_setcancelstate(PTHREAD_CANCEL_DISABLE,NULL);
  pthread_setcanceltype(PTHREAD_CANCEL_DEFERRED,NULL);
 
-
-
-/*for(int i=0;i<10;i++)
     {
         printf("inside the thread function\n");
         sleep(1);

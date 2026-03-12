@@ -40,6 +40,11 @@ int   job_id          = 0;             // background job counter (Fix 3)
 
 /* --- Stopped Jobs --- */
 pid_t stopped_pid[MAX_STOP];
+
+   
+
+
+
 char  stopped_cmd[MAX_STOP][MAX];
 int   stopped_c = 0;
 

@@ -24,5 +24,6 @@ int main()
             gcd=i;
         }
     }
-    printf(" the gcd is %d",gcd);
+    int lcm = (a*b)/gcd;
+    printf(" the gcd is %d",lcm);
 }
