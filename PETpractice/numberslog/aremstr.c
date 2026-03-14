@@ -2,31 +2,24 @@
 int main()
 {
     int n;
-    printf("enter the number ");
     scanf("%d",&n);
-    int rem =0;
+    int tem=n;
     int sum =0;
-    int temp = n;
-
 
     while(n>0)
     {
-        rem = n % 10;
+        int rem = n%10;
 
-        sum = sum + (rem * rem * rem);
-
-        n = n/10;
-
-
-
-
+        sum +=(rem*rem*rem);
+        n=n/10;
     }
-    if(temp == sum )
+
+    if(sum == tem)
     {
-        printf("%d the number is armstrong : ",sum);
+        printf("armstrong");
     }
     else
     {
-        printf("not armstrong");
+        printf("not ");
     }
 }

@@ -3,9 +3,11 @@
 
 int main()
 {
-    int arr[10][10];
+    //int arr[10][10];
     int r,c;
     scanf("%d %d",&r,&c);
+
+    int arr[r][c];
     int sum =0;
     printf("enter the numberbers : ");
 
