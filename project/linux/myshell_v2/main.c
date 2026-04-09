@@ -86,6 +86,12 @@ int check_cmd_type()
     if(args[0] == NULL)
         return NO_CMD;
 
+    /* Pipe irundha pipeline runner ku anuppurom.
+       Builtin first word ("echo", "pwd") irundhalum
+       full command pipe-a handle aaganum. */
+    if(strchr(input_str, '|') != NULL)
+        return EXTERNAL;
+
     // Builtin commands list - shell itself handle pannanum
     if(strcmp(args[0], "cd")   == 0) return BUILTIN;
     if(strcmp(args[0], "pwd")  == 0) return BUILTIN;
