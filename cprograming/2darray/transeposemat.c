@@ -6,21 +6,30 @@ int main()
     scanf("%d",&n);
 
     printf("enter the size of cl ");
-    scanf("%d"&m);
+    scanf("%d",&m);
 
 
     int arr[n][m];
 
     for(int i =0;i<n;i++)
     {
-        for(int j=0;i<m;j++)
+        for(int j=0;j<m;j++)
         {
-            scanf("%d"&arr[n][m]);
+            scanf("%d",&arr[i][j]);
         }
     }
+    printf("\n");
 
 
-    for(int )
+    for(int i=0;i<m;i++ )
+    {
+        for(int j=0;j<n;j++)
+        {
+            printf("%d ",arr[j][i]);
+        }
+        printf("\n");
+    
+    }
 
     
 }

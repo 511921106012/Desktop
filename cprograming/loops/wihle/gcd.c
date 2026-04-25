@@ -1,17 +1,36 @@
 #include<stdio.h>
+
+long long gcd(long long a, long long b)
+{
+    if (a==0 && b==0)
+    {
+        return -1;
+    }
+    if(a<0) a= -a;
+    if(b<0)b=-b;
+
+ while(b!=0)
+ {
+    long long temp = b;
+    b= a%b;
+    a= temp;
+ }
+    return a;
+
+
+
+}
 int main()
 {
-    int n,m;
-    printf("enter the number : ");
-    scanf("%d %d",&n &m)long
-
-    for(int i=0;i<=b ,i<=m)
+    long long a,b;
+    scanf("%lld %lld",&a,&b);
+    long long  result = gcd (a,b);
+    if(result == -1)
     {
-        if(n%i==0 && m&i==0)
-        {
-            int gcd =i;
-        }
+        return 0;
     }
-    printf("%d",i);
-    
+    else
+    {
+        printf("%lld",result);
+    }
 }
