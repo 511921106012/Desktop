@@ -1,4 +1,5 @@
 #include<stdio.h>
+// gcd qution
 
 long long gcd(long long a, long long b)
 {
