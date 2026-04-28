@@ -1,5 +1,7 @@
 #include<stdio.h>
 int main(){
-    printf("hi helo johnson");
+    printf("hi hello johnson");
+    return 0;
+    printf("god with me always with me");
         
 }
