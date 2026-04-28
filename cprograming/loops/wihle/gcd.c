@@ -1,5 +1,7 @@
 #include<stdio.h>
-int gcd(int n,int m)
+// gcd qution
+
+long long gcd(long long a, long long b)
 {
     if(m==0)
     {
