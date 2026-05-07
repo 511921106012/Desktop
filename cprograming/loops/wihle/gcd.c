@@ -1,21 +1,23 @@
 #include<stdio.h>
-// gcd qution
-
-long long gcd(long long a, long long b)
-{
-    if(m==0)
-    {
-        return n;
-    }
-    else
-    {
-        return gcd(m,n%m);
-    }
-}
-int  main()
+int main()
 {
     int n,m;
+    printf("enter the number : ");
     scanf("%d %d",&n,&m);
-    printf("%d",gcd(n,m));
+
+    if(n<=0 || m<=0 )
+    {
+        printf("invalid input ");
+
+    }
+/*  */
+    while(m!=0)
+    {
+        int temp =m;
+        m= n%m;
+        n = temp;
+    }
+
+    printf("the gcd %d",n);
     return 0;
 }

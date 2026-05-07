@@ -1,16 +1,20 @@
 #include<stdio.h>
+void swap (int *n,int *m)
+{
+
+    int temp = *n;
+    *n = *m;
+    *m = temp;
+}
 int main()
 {
-    int x ,y ;
-    printf("enter the two number : ");
-    scanf("%d %d",&x,&y);
-    int *p1 = &x;
-    int *p2 = &y;
-
-    int temp = *p1;
-    *p1 = *p2;
-    *p2 = temp;
-
-    printf("%d %d",*p1,*p2);
+    int n,m;
+    printf("enter the number : ");
+    scanf("%d %d",&n,&m);
+    printf("%d %d",n,m);
+    printf("\n after swap the value is \n");
+    swap(&n,&m);
+    printf("%d %d\n",n,m);
     return 0;
+
 }
