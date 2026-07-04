@@ -1,3 +1,16 @@
+/*Description:
+
+NAME: johnson .r  
+Date: 06/05/2026
+PROJECT NAME:Inverted Search*/
+
+
+
+
+
+
+
+
 #include "INDEX.h"
 
 Hash *h_table = NULL;   /* allocate in main, not at file scope */
@@ -12,7 +25,6 @@ int main(int argc, char *argv[])
         fprintf(stderr, "Memory allocation failed for hash table\n");
         return FAILURE;
     }
-
     if (argc < 2)
     {
         printf("./a.out <filename.txt>...\n");

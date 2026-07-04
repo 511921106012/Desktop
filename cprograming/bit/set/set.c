@@ -1,8 +1,20 @@
 #include<stdio.h>
 int main()
 {
-    int num = 29;
-    int mask=1;
-   int  set = num | (1<<mask);
-    printf("%d set ",set);
+    int n;
+    int mask;
+    int pos;
+
+    printf("enter the position ");
+    scanf("%d",&pos);
+
+    printf("enter the mask  : ");
+    scanf("%d",&mask);
+    
+
+
+    int num = num | (mask << pos );
+    printf("the set bit is %d",num);
+   return 0;
+    
 }

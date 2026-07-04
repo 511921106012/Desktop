@@ -1,50 +1,66 @@
 #include<stdio.h>
+
 int power(int rem,int digit)
 {
-    int result =1;
-    for(int i=0;i<digit;i++)
-    {
-        result =result*rem;
+    int result = 1;
 
+    for(int i =0;i< digit ;i++)
+    {
+        result = result * rem ;
+        
     }
-    return result;
+
+    return result ;
 }
 int main()
 {
     int n;
-    printf("enter the number :");
+    printf("enter the number : ");
     scanf("%d",&n);
-    if(n<=0)
+
+    if(n<0)
     {
-        printf("invalid input : ");
+        printf("invalid input ");
+
+        return 0;
     }
 
-    int temp = n;
+    int sum =0;
     int digit =0;
+
+
+   
+
+    int temp =n;
+
     while(temp != 0)
     {
         digit++;
-        temp = temp /10;
+        temp = temp / 10;
     }
 
-    temp =n;
+
+    temp = n;
     int rem =0;
-    int sum =0;
 
-    while(temp !=0)
+
+    while(temp!=0)
     {
-        rem = temp%10;
-
-        sum = sum+power(rem,digit);
+        rem = temp % 10;
+        sum = sum + power(rem,digit);
         temp = temp/10;
+
     }
-    if(sum ==n)
+
+    if(sum == n)
     {
-        printf("it is armstrong");
+        printf(" it is armstrong ");
     }
     else
     {
         printf("it is not armstrong");
     }
+
     return 0;
+
 }
