@@ -1,18 +1,18 @@
 #include <stdio.h>
 
-void tower_of_hanio(int disk,char src,char aux,char dest)
+void tower_of_hanio(int disk,char a,char b,char c)
 {
     if(disk == 1)
     {
-       printf("Move disk %d from %c to %C\n",disk,src,dest); 
+       printf("Move disk %d from %c to %c\n",disk,a,c); 
        return;
     }
 
-     tower_of_hanio(disk-1,src,dest,aux);
+     tower_of_hanio(disk-1,a,c,b);
 
-     printf("Move disk %d from %c to %c\n",disk,src,dest);
+     printf("Move disk %d from %c to %c\n",disk,a,c);
 
-     tower_of_hanio(disk-1,aux,src,dest);
+     tower_of_hanio(disk-1,b,a,c);
 
 }
 

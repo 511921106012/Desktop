@@ -1,18 +1,9 @@
 #include<stdio.h>
 int main()
 {
-    int n;
+    char str[100];
     printf("enter the number : ");
-    scanf("%d",&n);
+    scanf("%[^\n]",str);
 
-    if(n%5 ==0)
-    {
-        printf("the number is div %d",n);
-
-    }
-    else
-    {
-        printf("it is not divs ");
-    }
-    return 0;
+    printf("\n%s\n",str);
 }

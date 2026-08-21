@@ -1,7 +1,11 @@
 #include<iostream>
-using namespace std;
+//using namespace std;
 int main()
 {
-    
-    cout << "joseph\n";
+    int n;
+
+    cout << "enter the number";
+    cout << endl;
+    cout << n;
+
 }
