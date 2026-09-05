@@ -14,5 +14,5 @@ jobs:
 
     - name: Compile C Code
       run: |
-        gcc cprogram/coditional/print.c
-        ./a.out
+       gcc cprogram/coditional/print.c
+      ./a.out
