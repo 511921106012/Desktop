@@ -14,5 +14,5 @@ jobs:
 
     - name: Compile C Code
       run: |
-              gcc cprograming/evencopy.c -o my_program
+        gcc cprograming/evencopy.c -o my_program
         echo "C ப்ரோகிராம் வெற்றிகரமாக ஆன்லைன் லினக்ஸ் சர்வரில் கம்பைல் ஆகிவிட்டது!"
