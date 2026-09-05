@@ -1,8 +1,8 @@
-#include<stdio.h> 
+#include<stdio.h>
 int main()
 {
-    int  size;
-    printf("enter the  size : ");
+    int size;
+    printf("enter the size: ");
     scanf("%d",&size);
 
     int arr[size];
@@ -12,12 +12,18 @@ int main()
         scanf("%d",&arr[i]);
     }
 
-    printf("the element  are : ");
+
+    int large = arr[size-1];
+
     for(int i=0;i<size;i++)
     {
-        printf("%d ",arr[i]);
+        if( arr[i]>large)
+        {
+            large = arr[i];
+        }
     }
 
+    printf("large  number is %d",large);
 
 
 }

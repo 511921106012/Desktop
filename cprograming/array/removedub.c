@@ -1,50 +1,47 @@
 #include<stdio.h>
 int main()
 {
-    int size;
+    int size,i,j;
     printf("enter the size : ");
     scanf("%d",&size);
 
-    if(size<=0)
-    {
-        printf("invalid input : ");
-        return 0;
-    }
-
     int arr[size];
-
-    printf("enter the elements : ");
+    printf("enter the element : ");
     for(int i=0;i<size;i++)
     {
         scanf("%d",&arr[i]);
     }
 
-    
+    int sort[size];
+    int size1=1;
+    sort[0]=arr[0];
 
-int k=1;
-    for(int i=1;i<size;i++)
+    for( i=1;i<size;i++)
     {
-        
-            if(arr[i]!=arr[i-1])
+        for(j=0;j<size1;j++)
+        {
+
+            if(arr[i]==sort[j])
             {
-                arr[k++]=arr[i];
-
-               
-
-                
-                
+                break;
             }
+        }
+                
+
+
         
+
+        if(j==size1)
+        {
+            sort[size1]=arr[i];
+            size1++;
+        }
+    
     }
 
 
-     printf("%d, ",k);
-
-     for(int i=0;i<k;i++)
+     for(int i=0;i<size1;i++)
      {
-        printf("%d ",arr[i]);
+        printf("%d ",sort[i]);
      }
-
- 
-
 }

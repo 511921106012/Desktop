@@ -1,20 +1,17 @@
 #include<stdio.h>
 int main()
 {
-    int n,a= 0,b = 1;
-    printf("enter the number : ");
+    int n,sec,next;
+    printf("enter the number  : ");
     scanf("%d",&n);
-    if(n>=1)
-    printf("%d\n",a);
-    if(n>=2)
-    printf("%d\n",b);
-    
-    for(int i=3;i<=n;i++)
-    {
-        int c =  a+b;
-        printf("%d\n",c);
 
-        a=b;
-        b=c ;
+    int first ;
+    for(int i=0;i<=n;i++)
+    {
+        next = first + sec;
+        first = sec;
+        sec = next;
+
+        printf("%d",next);
     }
 }

@@ -1,0 +1,18 @@
+name: Run My C Program
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  compile-and-run:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Compile C Code
+      run: |
+              gcc cprograming/evencopy.c -o my_program
+        echo "C ப்ரோகிராம் வெற்றிகரமாக ஆன்லைன் லினக்ஸ் சர்வரில் கம்பைல் ஆகிவிட்டது!"

@@ -5,34 +5,27 @@ int main()
     printf("enter the size : ");
     scanf("%d",&size);
 
-    if(size <= 0)
-    {
-        printf("invalid input : ");
-        return 0;
-    }
-
-
     int arr[size];
-    printf("enter the elements :");
+    printf("enter the element : ");
     for(int i=0;i<size;i++)
     {
         scanf("%d",&arr[i]);
     }
-   int left =0;
-   int right = size-1;
 
-   while(left<right)
-   {
-    int temp = arr[left];
-    arr[left]= arr[right];
-    arr[right] = temp;
+    int left =0;
+    int right = size-1;
 
-    left++;right--;
-   }
+    while(left<right)
+    {
+        int temp = arr[left];
+        arr[left] = arr[right];
+        arr[right]= temp;
+        left ++;
+        right--;
+    }
 
-   for(int i=0;i<size;i++)
-   {
-    printf("%d ",arr[i]);
-   }
-
+    for(int i=0;i<size;i++)
+    {
+        printf("%d ",arr[i]);
+    }
 }
