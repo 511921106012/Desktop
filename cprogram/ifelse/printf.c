@@ -5,4 +5,4 @@ int main()
     printf("%d %d",&a,&b);
     int c=a-b;
     printf("%d",c);
-}
+};
