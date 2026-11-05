@@ -6,4 +6,5 @@ int main()
     scanf("%[^\n]",str);
 
     printf("\n%s\n",str);
+        printf("\n%s\n",str);
 }
