@@ -1,1 +1,6 @@
-printf("hello johnson dai ena da work pan  good and doing well oke");
+#include<stdio.h>
+int main()
+{
+     printf("hi hello johnson");
+     return 0;
+}
